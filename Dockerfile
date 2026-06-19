@@ -1,0 +1,12 @@
+# Etapa de build: compila el jar con Maven (no se necesita Maven instalado en local)
+FROM maven:3.9-eclipse-temurin-17 AS build
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+# Etapa de ejecucion: solo el JRE y el jar resultante
+FROM eclipse-temurin:17-jre-alpine
+COPY --from=build /app/target/articulos-api-1.0.0.jar /app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app.jar"]

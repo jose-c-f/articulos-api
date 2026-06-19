@@ -1,0 +1,14 @@
+target/
+HELP.md
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### VS Code ###
+# Ignoramos la config local de VS Code, pero versionamos launch.json
+# (config de debug compartida; sin claves de producción — esas van por env).
+.vscode/*
+!.vscode/launch.json

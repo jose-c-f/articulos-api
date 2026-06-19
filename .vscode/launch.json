@@ -1,0 +1,40 @@
+{
+  // Configuraciones de debug para la API Spring Boot (articulos-api).
+  // Docs: https://code.visualstudio.com/docs/java/java-debugging
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // --- Debug con MySQL LOCAL (localhost:3306) ---
+      "type": "java",
+      "name": "Debug (MySQL local)",
+      "request": "launch",
+      "mainClass": "com.ejemplo.articulos.ArticuloApiApplication",
+      "projectName": "articulos-api",
+      "console": "integratedTerminal",
+      "env": {
+        "DB_HOST": "localhost",
+        "DB_PORT": "3306",
+        "DB_DATABASE": "articulos_db",
+        "DB_USERNAME": "root",
+        "DB_PASSWORD": "****",
+        "DB_SSL_MODE": "DISABLED"
+      }
+    },
+    {
+      // --- Debug con TiDB Cloud ---
+      "type": "java",
+      "name": "Debug (TiDB Cloud)",
+      "request": "launch",
+      "mainClass": "com.ejemplo.articulos.ArticuloApiApplication",
+      "projectName": "articulos-api",
+      "console": "integratedTerminal",
+      "env": {
+        "DB_HOST": "gateway01.<region>.prod.aws.tidbcloud.com",
+        "DB_PORT": "4000",
+        "DB_DATABASE": "articulos_db",
+        "DB_USERNAME": "<prefijo>.root",
+        "DB_PASSWORD": "****"
+      }
+    }
+  ]
+}
